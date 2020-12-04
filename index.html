@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Fighting Mania - Arb</title>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.2/p5.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/5.8.3/firebase.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/node-uuid/1.4.8/uuid.js"></script>
+        <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+        <script src='https://cdnjs.cloudflare.com/ajax/libs/babel-polyfill/6.0.2/polyfill.min.js'></script>
+        <script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyDyG4QthJsPNzvXKEu0YPbZuGBleK9RYOQ",
+    authDomain: "fighting-mania-ef780.firebaseapp.com",
+    databaseURL: "https://fighting-mania-ef780.firebaseio.com",
+    projectId: "fighting-mania-ef780",
+    storageBucket: "fighting-mania-ef780.appspot.com",
+    messagingSenderId: "839403028619",
+    appId: "1:839403028619:web:d23375eb0ff4dffad1548e",
+    measurementId: "G-XWJB3S5VRZ"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+</script>
+    </head>
+    <style>
+    body {
+    margin: 0;
+    overflow: hidden;
+    color: #fff;
+    color: lightblue;
+}
+
+#splash {
+    height: 100vh;
+    width: 100vw;
+    background: url('https://i.ibb.co/fkwbM6X/giphy-3.gif');
+    background-position: center;
+    background-size: cover;
+}
+
+.bg {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    color: #fff;
+    background: rgba(0,0,0,0.65);
+}
+
+sup {
+    font-size: 10px;
+}
+
+.text {
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+input, button:focus {
+    outline: none;
+}
+
+input::placeholder {
+    color: #aaa;
+}
+
+#name {
+    height: 40px;
+    width: 75%;
+    display: block;
+    border: none;
+    border-radius: 20px;
+    background: rgba(0,0,0,0.5);
+    padding: 0 12px;
+    color: #fff;
+}
+
+#startGame {
+    height: 90px;
+    width: 45%;
+    background: rgba(0,0,0,0.5);
+    border-radius: 20px;
+    margin: 8px 0;
+    color: #fff;
+    border: 1px solid #fff;
+    cursor: pointer;
+}
+
+canvas
+{
+    position: absolute;
+    z-index: 3;
+}
+
+.toast
+{
+    position: absolute;
+    z-index: 10;
+    height: 90px;
+    width: 100vw;
+    background: #212121;
+    color: #fff;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    font-size: 15px;
+    padding: 0 0 0 10px;
+    box-sizing: border-box;
+    bottom: -50px;
+    transition: 0.5s;
+}
+#gm
+{
+    height:0;
+    width: 100vw;
+    background: rgba(0,0,0,0.6);
+    position: absolute;
+    z-index: 100000;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    font-size: 25px;
+    color: #fff;
+    transition: 1s;
+}
+
+#mur
+{
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    display: none;
+    z-index: 1000;
+    color: #fff;  
+}
+
+#online {
+    top: 30px;
+    z-index: 1000;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    color: #fff;
+    display: none;
+}
+
+#restart
+{
+    position: absolute;
+    top: 80%;
+    height: 90px;
+    width: 100px;
+    background: rgba(255,255,255,0.3);
+    left: 50%;
+    transform: translateX(-50%);
+    border: none;
+    z-index: 10000;
+    color: #fff;
+    border-radius: 5px;
+}
+
+#load
+{
+    color: #fff;
+    position: absolute;
+    bottom: 50px;
+    width: 100vw;
+    text-align: center;
+    display: none;
+}
+
+</style>
+    <body>
+        
+        <p id="mur">Points : <span id="m">0</span></p>
+        <p id="online">Online: <span id="onln">0</span></p>
+        <div id="gm">Game Over! <button id="restart">Restart</button></div>
+        
+        <div id="splash">
+            <div class="bg">
+                <p class="text">Fighting Mania <sup>2.0</sup></p>
+                <input placeholder="Enter your name" id="name" type="text">
+                <button id="startGame">Start</button>
+            </div>
+        </div>
+        
+        <p id="load">Loading...</p>
+        <script src="main.js"></script>
+        
+    </body>
+</html>
